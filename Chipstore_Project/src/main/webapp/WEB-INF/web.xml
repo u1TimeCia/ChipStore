@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+                      http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+         version="3.0">
+
+<display-name>Archetype Created Web Application</display-name>
+<!--  <servlet>-->
+<!--    <servlet-name>RegisterServlet</servlet-name>-->
+<!--    <servlet-class>web.RegisterServlet</servlet-class>-->
+<!--  </servlet>-->
+<!--  <servlet-mapping>-->
+<!--    <servlet-name>RegisterServlet</servlet-name>-->
+<!--    <url-pattern>/register</url-pattern>-->
+<!--  </servlet-mapping>-->
+<!--  <servlet>-->
+<!--    <servlet-name>LoginServlet</servlet-name>-->
+<!--    <servlet-class>web.LoginServlet</servlet-class>-->
+<!--  </servlet>-->
+<!--  <servlet-mapping>-->
+<!--    <servlet-name>LoginServlet</servlet-name>-->
+<!--    <url-pattern>/login</url-pattern>-->
+<!--  </servlet-mapping>-->
+  <servlet>
+    <servlet-name>UserServlet</servlet-name>
+    <servlet-class>web.UserServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UserServlet</servlet-name>
+    <url-pattern>/userServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>ChipServlet</servlet-name>
+    <servlet-class>web.ChipServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ChipServlet</servlet-name>
+    <url-pattern>/manager/chipServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>ClientchipServlet</servlet-name>
+    <servlet-class>web.ClientChipServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ClientchipServlet</servlet-name>
+    <url-pattern>/client/chipServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>Kaptcha</servlet-name>
+    <servlet-class>com.google.code.kaptcha.servlet.KaptchaServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Kaptcha</servlet-name>
+    <url-pattern>/kaptcha.jpg</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>CartServlet</servlet-name>
+    <servlet-class>web.CartServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CartServlet</servlet-name>
+    <url-pattern>/cartServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>OrderServlet</servlet-name>
+    <servlet-class>web.OrderServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>OrderServlet</servlet-name>
+    <url-pattern>/orderServlet</url-pattern>
+  </servlet-mapping>
+
+<!--  <filter>-->
+<!--    <filter-name>ManagerFilter</filter-name>-->
+<!--    <filter-class>filter.ManagerFilter</filter-class>-->
+<!--  </filter>-->
+<!--  <filter-mapping>-->
+<!--    <filter-name>ManagerFilter</filter-name>-->
+<!--    <url-pattern>/pages/manager/*</url-pattern>-->
+<!--    <url-pattern>/manager/chipServlet</url-pattern>-->
+<!--  </filter-mapping>-->
+  <filter>
+    <filter-name>TransactionFilter</filter-name>
+    <filter-class>filter.TransactionFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>TransactionFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+  
+  <error-page>
+    <error-code>500</error-code>
+    <location>/pages/error/error500.jsp</location>
+  </error-page>
+
+</web-app>
