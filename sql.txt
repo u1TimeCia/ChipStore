@@ -1,0 +1,101 @@
+CREATE TABLE t_user(
+	`id` INT PRIMARY KEY AUTO_INCREMENT,
+	`username` VARCHAR(20) NOT NULL UNIQUE,
+	`password` VARCHAR(20) NOT NULL,
+	`email` VARCHAR(200)
+);
+INSERT INTO t_user VALUE(NULL,'admin','admin','localhost8080@icloud.com');
+
+CREATE TABLE t_chip(
+	id INT PRIMARY KEY AUTO_INCREMENT,
+	NAME VARCHAR(50),
+	price DECIMAL(11,2),
+	author VARCHAR(20),
+	sales INT,
+	stock INT,
+	img_path VARCHAR (200)
+);
+
+SELECT * FROM t_chip;
+SELECT * FROM t_user;
+INSERT INTO t_chip(`id` , `name` , `author` , `price` , `sales` , `stock` , `img_path`)
+VALUES(NULL , 'Charge Attack' , 'ulTimeCia' , 80 , 9999 , 9 , 'static/img/default.jpg');
+
+INSERT INTO t_chip(`id` , `name` , `author` , `price` , `sales` , `stock` , `img_path`)
+VALUES(NULL , 'Counter' , 'ulTimeCia' , 78.5 , 6 , 13 , 'static/img/default.jpg');
+
+INSERT INTO t_chip(`id` , `name` , `author` , `price` , `sales` , `stock` , `img_path`)
+VALUES(NULL , 'Critical Up' , 'ulTimeCia' , 68, 99999 , 52 , 'static/img/default.jpg');
+
+INSERT INTO t_chip(`id` , `name` , `author` , `price` , `sales` , `stock` , `img_path`)
+VALUES(NULL , 'Down-Attack Up' , 'ulTimeCia' , 16, 1000 , 50 , 'static/img/default.jpg');
+
+INSERT INTO t_chip(`id` , `name` , `author` , `price` , `sales` , `stock` , `img_path`)
+VALUES(NULL , 'Last Stand	' , 'ulTimeCia' , 45.5 , 14 , 95 , 'static/img/default.jpg');
+
+INSERT INTO t_chip(`id` , `name` , `author` , `price` , `sales` , `stock` , `img_path`)
+VALUES(NULL , 'Ranged Attack Up	' , 'ulTimeCia' , 9.9, 12 , 53 , 'static/img/default.jpg');
+
+INSERT INTO t_chip(`id` , `name` , `author` , `price` , `sales` , `stock` , `img_path`)
+VALUES(NULL , 'Shockwave' , 'ulTimeCia' , 66.5, 125 , 535 , 'static/img/default.jpg');
+
+INSERT INTO t_chip(`id` , `name` , `author` , `price` , `sales` , `stock` , `img_path`)
+VALUES(NULL , 'Weapon Attack Up' , 'ulTimeCia' , 99.5 , 47 , 36 , 'static/img/default.jpg');
+
+
+INSERT INTO t_chip(`id` , `name` , `author` , `price` , `sales` , `stock` , `img_path`)
+VALUES(NULL , 'Anti Chain Damage' , '9S' , 9.9 , 85 , 95 , 'static/img/default.jpg');
+
+INSERT INTO t_chip(`id` , `name` , `author` , `price` , `sales` , `stock` , `img_path`)
+VALUES(NULL , 'Auto-Heal' , '9S' , 49, 52 , 62 , 'static/img/default.jpg');
+
+INSERT INTO t_chip(`id` , `name` , `author` , `price` , `sales` , `stock` , `img_path`)
+VALUES(NULL , 'Damage Absorb' , '9S' , 28 , 52 , 74 , 'static/img/default.jpg');
+
+INSERT INTO t_chip(`id` , `name` , `author` , `price` , `sales` , `stock` , `img_path`)
+VALUES(NULL , 'Deadly Heal' , '9S' , 51.5 , 48 , 82 , 'static/img/default.jpg');
+
+INSERT INTO t_chip(`id` , `name` , `author` , `price` , `sales` , `stock` , `img_path`)
+VALUES(NULL , 'Max HP Up' , '2B' , 12, 19 , 9999 , 'static/img/default.jpg');
+
+INSERT INTO t_chip(`id` , `name` , `author` , `price` , `sales` , `stock` , `img_path`)
+VALUES(NULL , 'Melee Defense' , '2B' , 33.05 , 22 , 88 , 'static/img/default.jpg');
+
+INSERT INTO t_chip(`id` , `name` , `author` , `price` , `sales` , `stock` , `img_path`)
+VALUES(NULL , 'Offensive Heal' , '2B' , 133.05 , 122 , 188 , 'static/img/default.jpg');
+
+INSERT INTO t_chip(`id` , `name` , `author` , `price` , `sales` , `stock` , `img_path`)
+VALUES(NULL , 'Ranged Defense' , '2B' , 173.15 , 21 , 81 , 'static/img/default.jpg');
+
+INSERT INTO t_chip(`id` , `name` , `author` , `price` , `sales` , `stock` , `img_path`)
+VALUES(NULL , 'Reset' , 'A2' , 99.15 , 210 , 810 , 'static/img/default.jpg');
+
+INSERT INTO t_chip(`id` , `name` , `author` , `price` , `sales` , `stock` , `img_path`)
+VALUES(NULL , 'Resilience' , 'A2' , 69.15 , 210 , 810 , 'static/img/default.jpg');
+
+INSERT INTO t_chip(`id` , `name` , `author` , `price` , `sales` , `stock` , `img_path`)
+VALUES(NULL , 'Auto-Use Item' , 'A2' , 89.15 , 20 , 10 , 'static/img/default.jpg');
+
+INSERT INTO t_chip(`id` , `name` , `author` , `price` , `sales` , `stock` , `img_path`)
+VALUES(NULL , 'Drop Rate Up' , 'A2' , 88.15 , 20 , 80 , 'static/img/default.jpg');
+
+CREATE TABLE t_order(
+	`order_id` VARCHAR(50) PRIMARY KEY,
+	`create_time` DATETIME,
+	`price` DECIMAL(11,2),
+	`status` INT,
+	`user_id` INT,
+	FOREIGN KEY(`user_id`) REFERENCES t_user(`id`)
+);
+DROP TABLE t_order;
+SELECT * FROM t_order;
+
+CREATE TABLE t_order_item(
+	`id` INT PRIMARY KEY AUTO_INCREMENT,
+	`name` VARCHAR(100),
+	`count` INT,
+	`price` DECIMAL(11,2),
+	`total_price` DECIMAL(11,2),
+	`order_id` VARCHAR(50),
+	FOREIGN KEY(`order_id`) REFERENCES t_order(`order_id`)
+);
